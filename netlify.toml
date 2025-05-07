@@ -1,0 +1,25 @@
+# Global settings applied to the whole site.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Redirects and headers are GLOBAL for all paths
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# Define environment variables
+[build.environment]
+  NODE_VERSION = "18"
+
+# Set headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self' api.mainnet-beta.solana.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' api.mainnet-beta.solana.com wss:; font-src 'self'; object-src 'none'; media-src 'self'; worker-src 'self' blob:;"
