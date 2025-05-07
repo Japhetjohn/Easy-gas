@@ -43,3 +43,4 @@ vite.config.ts.*
 *.tar.gz
 *.tgz
 server/public
+.env.example
